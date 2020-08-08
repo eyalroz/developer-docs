@@ -68,6 +68,22 @@ In TB78 the XUL element `toolbar` with attribute `customizable` has been re-impl
 	 defaultset="button-url,button-delete"/>
 ```
 
+### Menu-buttons
+
+In Thunderbird 78, Menu-buttons have been reimplemented as [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). To add a menubutton, we used to mark a `toolbarbutton` with attribute `type="menu-button"`; now we must add a `is="toolbarbutton-menu-button"` attribute. The following example is taken from the [source of the Remove Duplicate Messages extension](https://github.org/eyalroz/removedupes/):
+
+```markup
+<toolbarbutton id="removedupes-button"
+  oncommand="RemoveDupes.MessengerOverlay.searchAndRemoveDuplicateMessages();"
+  label="&removeduplicates-button.label;"
+  tooltiptext="&removeduplicates-button.tip;"
+  type="menu-button"
+  is="toolbarbutton-menu-button"   <!--  Note the addition of the 'is' attribute -->
+  insertafter="qfb-show-filter-bar"
+  removable="true"
+  class="toolbarbutton-1 chromeclass-toolbar-additional custombutton">
+```
+
 ## Changed API
 
 ### document.createElement\(\)
